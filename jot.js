@@ -78,9 +78,6 @@ a = 100       // you can set variables
 b = log10(a)  // and use Math keys
 
 // input is auto-saved in localStorage
-
-// you can adjust the textarea width
-// zoom if you need more lines
 `.trim()
 
 eval_input()
