@@ -28,29 +28,54 @@ html, body { width:100%; height:100%; }
 
 :root {
     --input-bg:      #ffffff;
+    --input-fg:      #000000;
     --output-bg:     #f4f6f8;
+    --output-fg:     #444444;
     --output-border: #e4e6e8;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --input-bg:      #111111;
-    --output-bg:     #333333;
-    --output-border: #444444;
+    --input-fg:      #ffffff;
+    --output-bg:     #222222;
+    --output-fg:     #eeeeee;
+    --output-border: #333333;
   }
 }
 
 /**********************************************************************/
 
 
-body {
-  font-size: 16pt;
+html, body {
+  font-size: 12pt;
+  background: var(--input-bg);
 }
 
 
 main {
-  margin: 20px 0;
+  margin: 2ch 0;
   border: 1px solid var(--output-border);
+  border-radius: 5px;
+}
+
+
+@media (min-width: 86ch) {
+  #input { width: 48ch; }
+  #output { width: 20ch; }
+}
+
+@media (max-width: 86ch) {
+  main {
+    margin: 0;
+    border: none;
+    width: 100%;
+  }
+  #output { width: 20ch; }
+}
+
+@media (max-width: 80ch) {
+  #output { width: 12.5ch; }
 }
 
 
@@ -58,16 +83,20 @@ main {
   font-family: ui-monospace, monospace;
   font-size: 1rem;
   line-height: 1.75;
-  padding: 0.75em 1em;
+  padding: 0.75ch 1ch;
 }
 
 
 #input {
+  flex: 1 1 auto;
   border: none;
   white-space: pre;
   overflow-x: scroll;
   overflow-wrap: normal;
-  width: 55ch;
+  background: var(--input-bg);
+  color: var(--input-fg);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 #input:focus {
@@ -76,10 +105,12 @@ main {
 
 
 #output {
+  flex: 0 0 auto;
   background: var(--output-bg);
-  flex-basis: 20ch;
-  min-width: 10ch;
+  color: var(--output-fg);
   border-left: 1px solid var(--output-border);
   overflow-x: scroll;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
