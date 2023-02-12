@@ -18,7 +18,7 @@ const esc = x => x.replaceAll('"', '\\x22')
 
 function eval_input() {
   let __out = []
-  __out.code = $input.value
+  __out.code = ($input.value || $input.placeholder)
     .split('\n')
     .map((x,i) => `try {__out[${i}] = eval("${esc(x)}")} catch {}`)
     .join('\n')
@@ -68,7 +68,9 @@ $output.on('scroll', output_scroll)
 ////////////////////////////////////////////////////////////////////////
 
 
-$input.value = localStorage.getItem('input') || `
+$input.value = localStorage.getItem('input')
+
+$input.placeholder = `
 // Use comments for notes
 
 123           // lines are evaluated
