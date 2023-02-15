@@ -75,7 +75,7 @@ main {
 }
 
 @media (max-width: 80ch) {
-  #output { width: 12.5ch; }
+  #output { width: 30.9375vw; }
 }
 
 
