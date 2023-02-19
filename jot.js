@@ -41,7 +41,8 @@ let scroll_timer = null
 
 $input.on('input', e => {
   clearTimeout(eval_timer)
-  eval_timer = setTimeout(eval_input, 250)
+  let t = (e.inputType == 'insertLineBreak') ? 1 : 250
+  eval_timer = setTimeout(eval_input, t)
 })
 
 
