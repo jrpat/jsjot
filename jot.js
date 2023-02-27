@@ -6,6 +6,7 @@ ET_p.on = ET_p.addEventListener; ET_p.off = ET_p.removeEventListener
 ////////////////////////////////////////////////////////////////////////
 
 
+const $main = $('#jot')
 const $input = $('#input')
 const $output = $('#output')
 
@@ -30,6 +31,8 @@ function eval_input() {
   with(p) { eval(__out.code) }
   $output.innerText = __out.join('\n') + '\n'
   localStorage.setItem('input', $input.value)
+  $main.style.minHeight = ''
+  $main.style.minHeight = $input.scrollHeight+'px'
 }
 
 
@@ -44,26 +47,6 @@ $input.on('input', e => {
   let t = (e.inputType == 'insertLineBreak') ? 1 : 250
   eval_timer = setTimeout(eval_input, t)
 })
-
-
-function handle_scroll(elem, fn) {
-  clearTimeout(scroll_timer)
-  scroll_timer = setTimeout(() => { elem.on('scroll', fn) }, 100)
-}
-
-function input_scroll(e) {
-  $output.off('scroll', output_scroll)
-  $output.scrollTop = $input.scrollTop
-  handle_scroll($output, output_scroll)
-}
-$input.on('scroll', input_scroll)
-
-function output_scroll(e) {
-  $input.off('scroll', input_scroll)
-  $input.scrollTop = $output.scrollTop
-  handle_scroll($input, input_scroll)
-}
-$output.on('scroll', output_scroll)
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -82,7 +65,4 @@ b = log10(a)  // and use Math keys
 `.trim()
 
 eval_input()
-
-
-
 
