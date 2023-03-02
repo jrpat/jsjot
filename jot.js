@@ -48,6 +48,18 @@ $input.on('input', e => {
   eval_timer = setTimeout(eval_input, t)
 })
 
+D.on('keydown', e => {
+  if (e.metaKey && (e.key == 's')) {
+    e.preventDefault()
+    let name = prompt('Choose a file name')
+    if (!name) { return }
+    let a = document.createElement('a')
+    a.download=name; a.target='_blank'
+    a.href = encodeURI(`data:text/plain,${$input.value}`)
+    a.click()
+  }
+})
+
 
 ////////////////////////////////////////////////////////////////////////
 
