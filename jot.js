@@ -5,6 +5,7 @@ E_p.$ = E_p.querySelector; E_p.$$ = E_p.querySelectorAll
 ET_p.on = ET_p.addEventListener; ET_p.off = ET_p.removeEventListener
 ////////////////////////////////////////////////////////////////////////
 
+const PHI = 1.618033988749894
 
 const $main = $('#jot')
 const $input = $('#input')
@@ -23,7 +24,7 @@ function eval_input() {
     .split('\n')
     .map((x,i) => `try {__out[${i}] = eval("${esc(x)}")} catch {}`)
     .join('\n')
-  let p = new Proxy({__out, window, eval, ...math}, {
+  let p = new Proxy({__out, window, eval, PHI, ...math}, {
     has(){ return true },
     get(_,k){ return _[k] },
     set(_,k,v){ _[k] = v }
