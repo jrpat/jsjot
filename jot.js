@@ -32,8 +32,8 @@ function eval_input() {
   with(p) { eval(__out.code) }
   $output.innerText = __out.join('\n') + '\n'
   localStorage.setItem('input', $input.value)
-  $main.style.minHeight = ''
-  $main.style.minHeight = $input.scrollHeight+'px'
+  $input.style.height = `${$input.scrollHeight}px`
+  $output.style.height = $input.style.height
 }
 
 
