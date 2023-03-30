@@ -49,6 +49,16 @@ $input.on('input', e => {
   eval_timer = setTimeout(eval_input, t)
 })
 
+let pairs = {'(':')', '[':']', '{':'}', '"':'"', "'":"'"}
+$input.on('keydown', e => {
+  if (!pairs.hasOwnProperty(e.key)) { return }
+  e.preventDefault()
+  let a=$input.selectionStart, z=$input.selectionEnd
+  let open=e.key, close=pairs[open], sel=''+getSelection()
+  document.execCommand('insertText', false, open+sel+close)
+  $input.selectionStart=a+1; $input.selectionEnd=z+1
+})
+
 D.on('keydown', e => {
   if (e.metaKey && (e.key == 's')) {
     e.preventDefault()
