@@ -97,6 +97,8 @@ a = 100       // you can set variables
 b = log10(a)  // and use Math keys
 
 // input is auto-saved in localStorage
+// go to /#my-file-name to name the jot
+// go to /#? to see a list of named jots
   `.trim()
 
   eval_input()
