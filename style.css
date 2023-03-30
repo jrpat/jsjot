@@ -48,8 +48,10 @@ html, body { width:100%; height:100%; }
 
 
 html, body {
+  font-family: ui-monospace, monospace;
   font-size: 12pt;
   background: var(--input-bg);
+  color-scheme: light dark;
 }
 
 
@@ -113,5 +115,33 @@ main {
   overflow-x: scroll;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+
+table, td {
+  border: 1px solid Window;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 0.25em;
+}
+
+td a {
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0 0.25em;
+  color: HighlightText;
+}
+
+td a:hover {
+  background: Highlight;
+  text-decoration: underline;
+}
+
+td button {
+  font-family: ui-monospace;
+  padding: 2px 5px 4px 5px;
+  font-size: 12pt;
 }
 
