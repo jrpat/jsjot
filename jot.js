@@ -54,13 +54,20 @@ $input.on('input', e => {
 })
 
 let pairs = {'(':')', '[':']', '{':'}', '"':'"', "'":"'"}
+let closers = Object.values(pairs)
 $input.on('keydown', e => {
-  if (!pairs.hasOwnProperty(e.key)) { return }
-  e.preventDefault()
-  let a=$input.selectionStart, z=$input.selectionEnd
-  let open=e.key, close=pairs[open], sel=''+getSelection()
-  document.execCommand('insertText', false, open+sel+close)
-  $input.selectionStart=a+1; $input.selectionEnd=z+1
+  if (pairs.hasOwnProperty(e.key)) {
+    e.preventDefault()
+    let a=$input.selectionStart, z=$input.selectionEnd
+    let open=e.key, close=pairs[open], sel=''+getSelection()
+    document.execCommand('insertText', false, open+sel+close)
+    $input.selectionStart=a+1; $input.selectionEnd=z+1
+  } else if (closers.includes(e.key)) {
+    e.preventDefault()
+    if ($input.value[$input.selectionStart] == e.key) {
+      $input.selectionStart += 1
+    }
+  }
 })
 
 D.on('keydown', e => {
