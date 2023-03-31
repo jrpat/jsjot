@@ -63,8 +63,8 @@ $input.on('keydown', e => {
     document.execCommand('insertText', false, open+sel+close)
     $input.selectionStart=a+1; $input.selectionEnd=z+1
   } else if (closers.includes(e.key)) {
-    e.preventDefault()
     if ($input.value[$input.selectionStart] == e.key) {
+      e.preventDefault()
       $input.selectionStart += 1
     }
   }
