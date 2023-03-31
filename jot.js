@@ -78,6 +78,10 @@ D.on('keydown', e => {
     a.href = encodeURI(`data:text/plain,${$input.value}`)
     a.click()
   }
+
+  if (e.ctrlKey && (e.key == '/')) {
+    LOC.hash = '?'; LOC.reload()
+  }
 })
 
 
