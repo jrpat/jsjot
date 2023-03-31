@@ -99,6 +99,7 @@ if (filename == '#?') {
     let o = `<a onclick="LOC.hash='${key}';LOC.reload()">${key}</a>`
     all.innerHTML += `<tr><td>${o}</td><td>${d}</td>`
   }
+  D.on('keydown', e => (e.key == 'Escape') && history.back())
 } else {
   $input.value = LS.getItem(filename)
 
