@@ -59,6 +59,7 @@ main {
   border: 1px solid var(--output-border);
   border-top: none;
   border-bottom: none;
+  min-height: 100vh;
 }
 
 
