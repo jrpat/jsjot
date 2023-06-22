@@ -26,7 +26,7 @@ function eval_input() {
   let __out = []
   __out.code = ($input.value || $input.placeholder)
     .split('\n')
-    .map((x,i) => `try {__out[${i}] = eval("${esc(x)}")} catch {}`)
+    .map((x,i) => x.trim() ? `try {$_ = __out[${i}] = eval("${esc(x)}")} catch {}` : '')
     .join('\n')
   let p = new Proxy({__out, window, eval, Math, PHI, UnitBezier, ...math}, {
     has(){ return true },
