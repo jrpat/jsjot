@@ -28,7 +28,7 @@ function eval_input() {
     .split('\n')
     .map((x,i) => `try {__out[${i}] = eval("${esc(x)}")} catch {}`)
     .join('\n')
-  let p = new Proxy({__out, window, eval, PHI, UnitBezier, ...math}, {
+  let p = new Proxy({__out, window, eval, Math, PHI, UnitBezier, ...math}, {
     has(){ return true },
     get(_,k){ return _[k] },
     set(_,k,v){ _[k] = v }
