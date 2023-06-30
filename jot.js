@@ -82,8 +82,9 @@ D.on('keydown', e => {
 
   if (e.metaKey && (e.key == 's')) {
     e.preventDefault()
-    let name = prompt('New jot name')
+    let name = prompt('Name this jot')
     if (name === null) { return }
+    name = '#'+name
     if (LS.getItem(name) !== null) {
       if (!confirm(`Overwrite existing jot '${name}'?`)) { return }}
     LS.setItem(name, $input.value)
