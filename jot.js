@@ -80,7 +80,7 @@ D.on('keydown', e => {
     return
   }
 
-  if (e.metaKey && (e.key == 's')) {
+  if ((e.metaKey || e.ctrlKey) && (e.key == 's')) {
     e.preventDefault()
     let name = prompt('Name this jot')
     if (name === null) { return }
@@ -91,7 +91,8 @@ D.on('keydown', e => {
     LOC.hash = name; LOC.reload()
   }
 
-  if (e.ctrlKey && (e.key == '/')) {
+  if ((e.ctrlKey || e.metaKey) && (e.key == '/')) {
+    e.preventDefault()
     LOC.hash = '?'; LOC.reload()
   }
 })
@@ -116,15 +117,26 @@ if (filename == '#?') {
   $input.value = LS.getItem(filename)
 
   $input.placeholder = `
+/***  Welcome to jsJot  ***/
+
+123            // Each line is evaluated.
+a = 100        // You can set variables,
+b = log10(a)   // use Math._ functions,
+x2 = x => x*2  // make your own functions,
+x2(444)        // and then use them.
+
 // Use comments for notes
 
-123           // lines are evaluated
-a = 100       // you can set variables
-b = log10(a)  // and use Math keys
+// Parens & brackets are auto-paired
+// and will surround highlighted text
 
-// input is auto-saved in localStorage
-// go to /#my-file-name to name the jot
-// go to /#? to see a list of named jots
+// Jots are auto-saved in localStorage
+// Press Cmd+S to name the Jot
+// Press Cmd+/ to list all named Jots
+
+// The text area is resizable if you need more space
+
+// Source code: github.com/jrpat/jsjot
   `.trim()
 
   eval_input()
